@@ -2,7 +2,7 @@ package com.clock;
 
 import java.util.*;
 
-public class RomanConverter<T> implements Converter<T> {
+public class RomanConverter implements Converter<Integer, String>, Validator<String> {
     private static Map<Character, Integer> romanToArabicMap = new HashMap<>();
     static {
         romanToArabicMap.put('I', 1);
@@ -14,10 +14,8 @@ public class RomanConverter<T> implements Converter<T> {
         romanToArabicMap.put('M', 1000);
     }
 
-    public T convert(String numbersToConvert) {
-        if (numbersToConvert.isEmpty()) {
-            throw new IllegalStateException("Empty string!");
-        }
+    public Integer convert(String numbersToConvert) {
+        validate(numbersToConvert);
         char[] symbols = numbersToConvert.toCharArray();
         Integer result = 0;
         Integer intermediateResult = 0;
@@ -43,6 +41,14 @@ public class RomanConverter<T> implements Converter<T> {
                 result += value;
             }
         }
-        return (T) result;
+        return result;
+    }
+
+    @Override
+    public void validate(String valueToValidate) throws IllegalStateException {
+        if (valueToValidate == null || ("").equals(valueToValidate)) {
+            throw new IllegalStateException();
+        }
+        //todo implement check logic
     }
 }
