@@ -5,13 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class RomanConverterTest {
-    private Converter<Integer> converter;
+    private Converter<Integer, String> converter;
     private final String[] romanSymbols = new String[] {"I", "V", "X", "L", "C", "D", "M"};
     private final Integer[] arabicSymbols = new Integer[] {1, 5, 10, 50, 100, 500, 1000};
 
     @Before
     public void prepareTests() {
-        converter = new RomanConverter<>();
+        converter = new RomanConverter();
     }
 
     @Test
