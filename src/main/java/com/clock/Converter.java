@@ -1,6 +1,6 @@
 package com.clock;
 
-public interface Converter<T> {
+public interface Converter<Return, Income> {
 
-    T convert(String numbersToConvert);
+    Return convert(Income numbersToConvert);
 }
